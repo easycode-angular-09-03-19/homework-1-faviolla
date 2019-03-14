@@ -21,12 +21,10 @@ factorial(5);
  * 
  */
 
-function multiply(): number {
-    let multiplication: number = 1;
-        for (let element of arguments) {
-            multiplication *= element;
-        }
-    return arguments.length === 0 ? 0 : multiplication;
+function multiply(...numbers: number[]): number {
+    if (numbers.length == 0) return 0;
+    
+    return numbers.reduce((a, b) => a * b);
 }
 
 /**
