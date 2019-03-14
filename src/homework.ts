@@ -27,6 +27,7 @@ function multiply(...numbers: number[]): number {
     return numbers.reduce((a, b) => a * b);
 }
 
+
 /**
  * task 03
  * 
@@ -79,12 +80,9 @@ abstract class Car {
         this.fuel = fuel;
     }
     
-    drive(mileage: number): void {
-        console.log('drive');
-    }
-    refuel(): void {
-        console.log('refuel');
-    }
+    public drive(mileage: number): void {}
+    public refuel(fuel: number): void {}
+    
 }
 
 
@@ -107,13 +105,16 @@ abstract class Car {
  */
 
 class Audi extends Car {
-    drive(mileage: number): void | string {
+    constructor(mileage: number, fuel: number) {
+        super(mileage, fuel)
+    }
+    public drive(mileage: number): void | string {
         if (this.fuel <= 0) return 'You need refuel';
         this.mileage += mileage;
         this.fuel -= mileage;
     }
-    refuel(): void {
-        this.fuel++;
+    public refuel(fuel): void {
+        this.fuel += fuel;
     }
 
     public getInfo(): any {
